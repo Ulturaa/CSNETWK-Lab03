@@ -1,18 +1,34 @@
-## Getting Started
+# README
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Files are located under the src folder
 
-## Folder Structure
+## How to Run
 
-The workspace contains two folders by default, where:
+### 1. Open 2 Terminals
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Open two separate terminals in the project directory.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### 2. Compile the Programs
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+In the first terminal, compile the server:
 
-## Dependency Management
+```bash
+javac Server.java
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+In the second terminal, compile the client:
+```bash
+javac Client.java
+```
+
+Run the server
+```bash
+java Server
+```
+
+Run the client
+```bash
+java Client
+```
+
+**IMPORTANT:** Server must run first before client
