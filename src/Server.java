@@ -32,21 +32,16 @@ public class Server {
             int num = Integer.parseInt(in.readLine());
             System.out.println("Client of " + serverName + " | Input number = " + num);
 
-            // Compute for the sum 
+            // Compute for the sum and displays it
             System.out.println("Server | Computing for sum");
             int sum = rand + num;
             String retMsg = "The sum of " + rand + " + " + num + " = " + sum;
-
-            // Return the sum to the client
-
-            /*
-            For now prints to System console
-            Once client is finnished, uncomment code below and remove the System.out line
-
-            PrintWriter out = new PrintWriter(soc.getOutputStream(), true);
-            out.println(retMsg);
-            */
             System.out.println(retMsg);
+
+            // Return the server name and chosen number to the client
+            PrintWriter out = new PrintWriter(soc.getOutputStream(), true);
+            out.println(serverName);
+            out.println(rand);
             
             // Close the socket after executing
             ss.close();
