@@ -20,25 +20,45 @@ public class Client {
             BufferedReader userIn = new BufferedReader(new InputStreamReader(System.in));
 
             // Get integer input from 1-100
-            // Ask for input again if out of range or non-integer input.
+            // Ask for input again if non-integer input.
+
+            int num;
             while(true) {
                 System.out.println("Client | Input a number (1-100): ");
                 try{
-                    int num = Integer.parseInt(userIn.readLine());
-                    if(num >=1 && num <= 100) {
-                        out = new PrintWriter(soc.getOutputStream(), true);
-                        out.println(num);
-                        break;
-                    } else{
-                        System.out.println("Client | Input invalid! Number must be between 1 and 100");
-                    }
+                    num = Integer.parseInt(userIn.readLine());
+                    break;
                 } catch(Exception e) {
                     System.out.println("Client | Input invalid! Please enter a valid input");
                 }
             }
 
-            // Implement the return of the sum from server here
+            // Send the client number to server
+            out.println(num);
 
+            // If number is out of range, the server will terminate
+            if(num < 1 || num > 100){
+                System.out.println("Client | Number out of range!");
+                System.out.println("Client | Server will now begin termination!");
+                soc.close();
+                return;
+            }
+
+            // Receiving the server's response
+            BufferedReader serverIn = new BufferedReader(new InputStreamReader(soc.getInputStream()));
+            String serverName = serverIn.readLine();
+            int serverNum = Integer.parseInt(serverIn.readLine());
+
+            // Displaying the server's response
+            System.out.println();
+            System.out.println("Client | Client Name = " + clientName);
+            System.out.println("Client | Server Name = " + serverName);
+            System.out.println("Client | Client Number = " + num);
+            System.out.println("Client | Server Number = " + serverNum);
+
+            // Compute the Sum
+            int sum = num + serverNum;
+            System.out.println("Client | Sum = " + sum);
             soc.close();
         } catch(Exception e) {
             e.printStackTrace();
