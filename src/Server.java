@@ -30,7 +30,7 @@ public class Server {
             // Retrieve user input from client
             in = new BufferedReader(new InputStreamReader(soc.getInputStream()));
             int num = Integer.parseInt(in.readLine());
-            System.out.println("Client of " + serverName + " | Input number = " + rand);
+            System.out.println("Client of " + serverName + " | Input number = " + num);
 
             // Compute for the sum 
             System.out.println("Server | Computing for sum");
