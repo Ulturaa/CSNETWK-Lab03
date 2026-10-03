@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    public void main(String[] args){
+    public static void main(String[] args){
 
         String serverName = "Ceres Fauna";
 
